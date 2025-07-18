@@ -29,32 +29,32 @@ const Projects = () => {
       <div>
         <div className="text-center mt-5 mb-10  ">
           <button
-            className="mr-5 border border-transparent Projectbutton shadow-md font-Manrope border-black p-2 rounded-md"
+            className="mr-5 sma:mb-3 mda:mb-3 border border-transparent Projectbutton shadow-md font-Manrope border-black p-2 rounded-md"
             onClick={() => handleClick("all")}
           >
             ALL
           </button>
           <button
-            className="mr-5 border border-transparent Projectbutton font-Manrope border-black p-2 rounded-md"
+            className="mr-5 sma:mb-3 mda:mb-3 border border-transparent Projectbutton font-Manrope border-black p-2 rounded-md"
             onClick={() => handleClick("Mechanical")}
           >
             Mechanical Engineering
           </button>
           <button
-            className="mr-5 border border-transparent Projectbutton font-Manrope border-black p-2 rounded-md"
+            className="mr-5 sma:mb-3 mda:mb-3 border border-transparent Projectbutton font-Manrope border-black p-2 rounded-md"
             onClick={() => handleClick("Structural")}
           >
             Structural Engineering
           </button>
           <button
-            className="mr-5 border border-transparent Projectbutton font-Manrope border-black p-2 rounded-md"
+            className="mr-5 sma:mb-3 mda:mb-3 border border-transparent Projectbutton font-Manrope border-black p-2 rounded-md"
             onClick={() => handleClick("Electrical")}
           >
             Electrical Engineering
           </button>
         </div>
         <div className=' pt-10 pb-8'>
-          <div className="grid grid-cols-4 sma:grid-cols-2 mda:grid-cols-2 gap-4 justify-center items-center">
+          <div className="grid lg:grid-cols-4 sma:grid-cols-1 mda:grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center">
             {filteredData.map((x) => (
               <motion.div
                 key={x.id}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'motion/react'
+import Swal from 'sweetalert2';
 import { contacGrid } from '../utils';
 import { LuLandmark, LuMessageSquare, LuMessagesSquare, LuPhone } from 'react-icons/lu';
 import { FaEnvelope, FaPaperPlane } from 'react-icons/fa';
@@ -7,6 +8,38 @@ import Maps from '../components/Maps';
 import Accordion from '../components/Accordion';
 
 const Contact = () => {
+
+
+  const [result, setResult] = React.useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "2462193b-53ac-47a8-8ba5-c355f34a67c9");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      Swal.fire({
+        title: "Success!",
+        text: "Message Sent Successfully!",
+        icon: "success"
+      });
+    event.target.reset();
+    setResult("");
+    }
+    else {
+      setResult("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <div>
       <motion.div
@@ -55,7 +88,7 @@ const Contact = () => {
                 Project Inquiry
               </h1>
               <p className='font-Raleway text-sm text-slate-600 mt-1'>Fill out the form below and we'll get back to you as soon as possible</p>
-              <form action="" className='my-3 py-5'>
+              <form action="" onSubmit={onSubmit} id='form' className='my-3 py-5'>
                 <div className='mt-5 flex gap-6 '>
                   <div>
                     <label htmlFor="Firstname" className='mb-4 font-Raleway'>First name<span className='text-red-600'>*</span></label>
@@ -63,7 +96,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <label htmlFor="Firstname" className='mb-4 font-Raleway'>Last name<span className='text-red-600'>*</span></label>
-                    <input type="text" name="Firstname" required className='px-2 outline-1 focus:outline-blue-400 h-8 w-full block rounded outline-none border-[1px] border-gray-200 ' id="" />
+                    <input type="text" name="Lastname" required className='px-2 outline-1 focus:outline-blue-400 h-8 w-full block rounded outline-none border-[1px] border-gray-200 ' id="" />
                   </div>
                 </div>
                 <div className='mt-6'>
@@ -72,7 +105,7 @@ const Contact = () => {
                 </div>
                 <div className='mt-6'>
                 <label htmlFor="Company" className='mb-4 font-Raleway'>Company Name</label>
-                <input type="email"  name="Company" placeholder='Your Company name' className=' mt-2 block px-2 outline-1 focus:outline-blue-400 h-8 w-full  rounded outline-none border-[1px] border-gray-200' id="" />
+                <input type="text"  name="Company" placeholder='Your Company name' className=' mt-2 block px-2 outline-1 focus:outline-blue-400 h-8 w-full  rounded outline-none border-[1px] border-gray-200' id="" />
                 </div>
                 <div className='mt-6'>
                   <label htmlFor="Phone number" className='mb-4 font-Raleway' placeholder> Phone Number</label>
@@ -82,11 +115,11 @@ const Contact = () => {
                   <label htmlFor="Services" className='mb-5 font-Raleway'>Service of interest</label>
                 <select name="Services" className='block h-9 rounded-md px-3' id="">
                   <option value="">Select a service</option>
-                  <option value="">Structural Engineering</option>
-                  <option value="">Mechanical Engineering</option>
-                  <option value="">Electrical Engineering</option>
-                  <option value="">Safety Engineering</option>
-                  <option value="">Project Management</option>
+                  <option value="Structural Engineering">Structural Engineering</option>
+                  <option value="Mechanical Engineering">Mechanical Engineering</option>
+                  <option value="Electrical Engineering">Electrical Engineering</option>
+                  <option value="Safety Engineering">Safety Engineering</option>
+                  <option value="Project Management">Project Management</option>
                 </select>
 
                 </div>
@@ -94,7 +127,7 @@ const Contact = () => {
                   <label htmlFor="Project" className='pb-4'>Project Description*</label>
                   <textarea name="Project" cols={20} rows={8} className='block resize-none mt-4 rounded-lg border-[1px] border-blue-400 w-full h-full bg-transparent outline-1  px-2 py-1' id="" ></textarea>
                 </div>
-                <button className='flex text-center justify-center items-center gap-4 rounded-md bg-blue-600 p-2 text-white' type="submit">Send message <FaPaperPlane/></button>
+                <button className='flex text-center justify-center items-center gap-2 hover:opacity-85 rounded-md bg-blue-600 p-2 text-white' type="submit">Send message <FaPaperPlane/></button>
               </form>
             </div>
           </div>

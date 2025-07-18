@@ -114,6 +114,7 @@ const Numbers = React.memo(NumbersComponent);
     <div className="overflow-hidden">
       <div className="max-w-[1200px] w-full h-[100vh]  relative overflow-hidden mx-auto">
         <img
+          loading="lazy"
           src={imageSlider[currentIndex].image}
           alt={imageSlider[currentIndex].alt}
           key={currentIndex}

@@ -33,7 +33,7 @@ const ProjectPage = () => {
           <span className='bg-blue-600 text-white rounded-xl py-1 px-2 font-Raleway text-sm'>{ProjPage.Status}</span>
           <h1 className='mt-2 text-5xl sma:text-3xl mda:text-3xl font-semibold font-Raleway'>{ProjPage.Title}</h1>
           <h4 className='text-xl font-Raleway leading-7 w-[80%] mt-5 tracking-wide text-slate-500'>{ProjPage.intro}</h4>
-        <div className='flex gap-4 my-5'>
+        <div className='flex sma:grid sma:grid-cols-2 mda:grid mda:grid-cols-2 gap-4 my-5'>
           <span className='flex items-center gap-2'>
             <FaMapMarkerAlt className='text-sm text-neutral-600'/>
             <span className='font-Raleway'>{ProjPage.location}</span>
@@ -58,7 +58,7 @@ const ProjectPage = () => {
           </span>
         </div>
         </div>
-        <div className='px-6  bg-center mb-6 h-[70vh]'>
+        <div className='px-6  bg-center mb-6 h-[70vh] sma:h-full mda:h-full'>
           <img src={ProjPage.image} loading='lazy' className='lg:h-full bg-center lg:w-[90%] bg-cover rounded-md' alt="" />
         </div>
         <div className=' my-10 px-6'>
@@ -73,10 +73,10 @@ const ProjectPage = () => {
           </div>
         </div>
         <div className='mb-8 mt-20'>
-          <div className='flex justify-center gap-5'>
+          <div className='flex sma:grid sma:grid-cols-2 justify-center gap-5'>
           {
             ProjPage.sideImage.map((x) => (
-                <img key={x.id} loading='lazy' className='w-[350px] h-[300px] shadow-lg rounded-md' src={x.img} alt="" />
+                <img key={x.id} loading='lazy' className='w-[350px] sma:w-[250px] sma:h-[150px] h-[300px] shadow-lg rounded-md' src={x.img} alt="" />
             ))
           }
               </div>
